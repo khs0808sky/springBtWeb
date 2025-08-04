@@ -5,6 +5,7 @@
 - [2025-07-30](#2025-07-30)
 - [2025-07-31](#2025-07-31)
 - [2025-08-01](#2025-08-01)
+- [2025-08-02](#2025-08-02)
 
 <br><br><br>
 
@@ -377,6 +378,102 @@ $('#btnReset').on('click', function() {
 
   * URL은 자원(Resource)을 명확히 표현해야 함
   * 상태 없는(stateless) 구조
+
+---
+
+📅[목차로 돌아가기](#-목차)
+
+---
+
+# 2025-08-04
+
+---
+
+## ✅ 1. REST API를 활용한 서비스 개발
+
+### 🔹 RESTful 서비스란?
+
+* **REST(Representational State Transfer)** 원칙을 따르는 웹 서비스 아키텍처
+* 자원을 명확히 표현하고, HTTP 메서드를 통해 해당 자원에 대한 행위를 정의
+
+### 🔹 핵심 개념
+
+| 항목               | 설명                                                               |
+| ---------------- | ---------------------------------------------------------------- |
+| **자원(Resource)** | `/users`, `/products/1`, `/posts/12/comments` 와 같은 URI 형태로 자원 표현 |
+| **HTTP 메서드 사용**  | `GET`, `POST`, `PUT`, `DELETE` 등 메서드로 자원에 대한 작업 정의               |
+| **무상태성**         | 서버는 클라이언트의 상태를 저장하지 않음                                           |
+| **표현의 일관성**      | 요청/응답은 일반적으로 JSON 포맷 사용                                          |
+
+### 🔹 기능적 설계 요소
+
+| 항목      | 설명                                      |
+| ------- | --------------------------------------- |
+| **페이징** | `/users?page=1&size=10`                 |
+| **필터링** | `/products?category=shoes&price<100000` |
+| **정렬**  | `/posts?sort=createdAt,desc`            |
+
+### 🔹 API 버전 관리
+
+* URI 버전 방식: `/api/v1/users`
+* 헤더 버전 방식: `Accept: application/vnd.company.v1+json`
+
+### 🔹 보안
+
+* HTTPS 사용
+* 토큰 인증 (예: JWT)
+* API Key, OAuth2 등 적용 가능
+
+### 🔹 에러 처리
+
+| 상태코드                        | 의미       |
+| --------------------------- | -------- |
+| `200 OK`                    | 정상 처리 완료 |
+| `201 Created`               | 자원 생성 완료 |
+| `400 Bad Request`           | 잘못된 요청   |
+| `401 Unauthorized`          | 인증 실패    |
+| `404 Not Found`             | 자원 없음    |
+| `500 Internal Server Error` | 서버 내부 오류 |
+
+### 🔹 API 문서화
+
+* Swagger(OpenAPI) 등으로 자동화된 문서 제공
+* API 명세(JSON 구조, 파라미터, 응답 예시 등)를 문서화하여 개발자 간 협업 용이
+
+---
+
+## ✅ 2. DOM Handling (Document Object Model)
+
+### 🔹 DOM이란?
+
+* HTML 문서를 트리 형태의 객체로 표현한 구조
+* 자바스크립트를 통해 문서의 구조, 내용, 스타일을 동적으로 변경 가능
+
+### 🔹 DOM 접근 및 조작
+
+| 기능    | 예시                                |
+| ----- | --------------------------------- |
+| 요소 선택 | `document.getElementById('myId')` |
+
+```
+           | `document.querySelector('.class')`  
+```
+
+\| 내용 변경     | `element.innerText = '내용변경';`
+\| 속성 변경     | `element.setAttribute('type', 'text')`
+\| 스타일 변경   | `element.style.color = 'red';`
+\| 요소 생성/추가 | `document.createElement('div')`, `appendChild()`
+\| 이벤트 연결   | `element.addEventListener('click', callback)`
+
+### 🔹 jQuery 방식 (선택적으로 사용)
+
+```javascript
+$('#myId').text('변경된 텍스트');
+$('.myClass').css('color', 'blue');
+$('#btn').on('click', function() {
+  alert('클릭됨');
+});
+```
 
 ---
 
